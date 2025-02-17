@@ -27,7 +27,7 @@ parser.add_argument('--val_ratio', type=float, default=0.1, help='验证集比�
 parser.add_argument('--random_seed', type=int, default=42, help='随机种子')
 
 parser.add_argument('--device', type=str, default=None, help='计算设备')
-parser.add_argument('--output_model_dir', type=str, default=None, help='保存模型路径')
+parser.add_argument('--output_model_dir', type=str, default='./model', help='保存模型路径')
 parser.add_argument('--output_result_dir', type=str, default=None, help='保存结果路径')
 parser.add_argument('--verbose', action='store_true', help='是否显示详细信息')
 

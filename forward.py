@@ -22,7 +22,7 @@ parser.add_argument('--model', type=str, help='模型路径')
 parser.add_argument('--data_dir', type=str, default=None, help='数据路径')
 
 parser.add_argument('--data_folder', type=str, default=None, help='数据文件夹')
-parser.add_argument('--label_dir', type=str, default=None, help='标签路径')
+parser.add_argument('--label_path', type=str, default=None, help='标签路径')
 parser.add_argument('--n', type=int, default=3, help='随机选择图片数量')
 
 parser.add_argument('--device', type=str, default=None, help='计算设备')
