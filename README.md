@@ -15,7 +15,7 @@ pip install -r requirements.txt
 ![训练过程](./result/HC_EMCI.png)
 ## 结果演示：
 ```bash
-python forward.py --model './models/HC_EMCI.pth' --data_folder './data/HC_EMCI' --label_path './labels/EMCI_HCtrain_list.xlsx'
+python forward.py --model './model/HC_EMCI.pth' --data_folder './data/HC_EMCI' --label_dir './labels/EMCI_HCtrain_list.xlsx'
 ```
 ![结果演示](./result/Figure_1.png)
 
