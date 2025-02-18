@@ -110,12 +110,12 @@ if __name__ == '__main__':
 
             if args.verbose:
                 print(
-                    f'Epoch {epoch + 1}/{args.num_epochs}, Train Loss: {train_loss:.4f}, Train Acc: {train_acc * 100:.2f} %, Val Loss: {val_loss:.4f}, Val Acc: {val_acc * 100:.2f} %')
+                    f'Epoch {epoch + 1}/{args.num_epochs}, Train Loss: {train_loss:.4f}, Train Acc: {train_acc:.2f} %, Val Loss: {val_loss:.4f}, Val Acc: {val_acc:.2f} %')
 
         if args.verbose:
             print("Training done.")
         test_loss, test_acc = evaluate_model(model, test_dataloader, criterion, device)
-        print(f'Test Loss: {test_loss:.4f}, Test Acc: {test_acc * 100:.2f} %')
+        print(f'Test Loss: {test_loss:.4f}, Test Acc: {test_acc:.2f} %')
 
         if args.output_model_dir:
             if not os.path.exists(args.output_model_dir):

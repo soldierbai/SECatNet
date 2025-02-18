@@ -63,8 +63,8 @@ if __name__ == '__main__':
         model.to(args.device)
         criterion = nn.CrossEntropyLoss()
 
-        test_loss, test_acc = evaluate_model(model, dataloader, criterion, device)
-        print(f'Loss: {test_loss:.4f}, Acc: {test_acc * 100:.2f} %')
+        loss, acc = evaluate_model(model, dataloader, criterion, device)
+        print(f'Loss: {loss:.4f}, Acc: {acc:.2f} %')
 
     except AssertionError as e:
         print(f"启动参数有误: {e}")

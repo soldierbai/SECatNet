@@ -22,7 +22,7 @@ def train_model(model, train_dataloader, criterion, optimizer, device):
 
     epoch_loss = running_loss / len(train_dataloader)
     epoch_acc = correct / total
-    return epoch_loss, epoch_acc
+    return epoch_loss, epoch_acc * 100
 
 # 验证/测试函数
 def evaluate_model(model, dataloader, criterion, device):
@@ -44,4 +44,4 @@ def evaluate_model(model, dataloader, criterion, device):
 
     epoch_loss = running_loss / len(dataloader)
     epoch_acc = correct / total
-    return epoch_loss, epoch_acc
+    return epoch_loss, epoch_acc * 100
