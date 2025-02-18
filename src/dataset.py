@@ -6,7 +6,7 @@ from PIL import Image
 import os
 
 class CustomDataset(Dataset):
-    def __init__(self, data_dir, labels_dir, transform=None, device='cpu'):
+    def __init__(self, data_dir, labels_dir, transform=None, device='cpu', prefix='g'):
         self.data_dir = data_dir
         labels_df = pd.read_excel(labels_dir, header=None)
         self.labels = labels_df.iloc[:, 0].values
@@ -15,7 +15,7 @@ class CustomDataset(Dataset):
         self.device = device
 
         for idx in range(len(self.labels)):
-            img_name = os.path.join(self.data_dir, f"g{idx}.png")
+            img_name = os.path.join(self.data_dir, f"{prefix}{idx}.png")
             image = Image.open(img_name).convert('L')
             if self.transform:
                 image = self.transform(image)
