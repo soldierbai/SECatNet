@@ -110,7 +110,7 @@ if __name__ == '__main__':
 
             if args.verbose:
                 print(
-                    f'Epoch {epoch + 1}/{args.num_epochs}, Train Loss: {train_loss * 100:.2f} %, Train Acc: {train_acc:.4f}, Val Loss: {val_loss:.4f}, Val Acc: {val_acc * 100:.2f} %')
+                    f'Epoch {epoch + 1}/{args.num_epochs}, Train Loss: {train_loss:.4f}, Train Acc: {train_acc * 100:.2f} %, Val Loss: {val_loss:.4f}, Val Acc: {val_acc * 100:.2f} %')
 
         if args.verbose:
             print("Training done.")
