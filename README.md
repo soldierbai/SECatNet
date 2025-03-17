@@ -34,6 +34,60 @@ python forward.py --model './model/HC_EMCI.pth' --data_folder './data/HC_EMCI' -
 ```
 ![结果演示](./result/Figure_1.png)
 
+
+## API
+
+启动：
+```bash
+python api.py --model './model/HC_EMCI.pth'
+```
+
+请求方式：
+```python
+import base64
+import requests
+
+url = 'http://127.0.0.1:5010/api/v1/hc_emci/predict'
+
+payload = {}
+headers = {
+    'Content-Type': 'application/json'
+}
+
+with open("YOUR_IMAGE_PATH", 'rb') as f:
+    image = base64.b64encode(f.read()).decode('utf-8')  # 二进制读取，并把图片转为base64编码
+
+payload['image'] = image
+
+resp = requests.post(url, json=payload, headers=headers, verify=False)
+print(resp.text)
+print(resp.status_code)
+print(resp.json)
+```
+
+参考结果(服务端)：
+```shell
+(.venv) root@xxx SECatNet % python api.py --model './model/HC_EMCI.pth'
+ * Serving Flask app 'api'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5010
+ * Running on http://xxx.xxx.xxx.xxx:5010
+Press CTRL+C to quit
+tensor([[ 3.7268, -6.6313]])
+127.0.0.1 - - [17/Mar/2025 17:19:58] "POST /api/v1/hc_emci/predict HTTP/1.1" 200 
+```
+参考结果(客户端)：
+```shell
+{"class_0":3.726788282394409,"class_1":-6.631284713745117,"probabilities":[0.9999682903289795,3.1734536605654284e-05]}
+
+200
+<bound method Response.json of <Response [200]>>
+
+Process finished with exit code 0
+```
+
 ## 模型结构：
 
 > 参考论文： 
@@ -93,6 +147,6 @@ SECatNet
 ├── main.py  # 训练主入口
 ├── evaluate.py  # 模型评估
 ├── requirements.txt  # 依赖
-├── start_training.bat  # Windows启动脚本
-└── start_training.sh  # MacOS启动脚本
+├── api.py  # 对外提供的api
+└── test_api.py  # 测试api的可用性
 ```
