@@ -45,6 +45,7 @@ python api.py --model './model/HC_EMCI.pth'
 请求方式：
 ```python
 import base64
+import json
 import requests
 
 url = 'http://127.0.0.1:5010/api/v1/hc_emci/predict'
@@ -54,15 +55,14 @@ headers = {
     'Content-Type': 'application/json'
 }
 
-with open("YOUR_IMAGE_PATH", 'rb') as f:
-    image = base64.b64encode(f.read()).decode('utf-8')  # 二进制读取，并把图片转为base64编码
+with open('YOUR_IMAGE_PATH', 'rb') as f:
+    image = base64.b64encode(f.read()).decode('utf-8')
 
 payload['image'] = image
 
 resp = requests.post(url, json=payload, headers=headers, verify=False)
-print(resp.text)
 print(resp.status_code)
-print(resp.json)
+print(json.dumps(resp.json(), indent=4, ensure_ascii=False))
 ```
 
 参考结果(服务端)：
@@ -80,12 +80,15 @@ tensor([[ 3.7268, -6.6313]])
 ```
 参考结果(客户端)：
 ```shell
-{"class_0":3.726788282394409,"class_1":-6.631284713745117,"probabilities":[0.9999682903289795,3.1734536605654284e-05]}
-
 200
-<bound method Response.json of <Response [200]>>
-
-Process finished with exit code 0
+{
+    "class_0": 3.726788282394409,
+    "class_1": -6.631284713745117,
+    "probabilities": [
+        0.9999682903289795,
+        3.1734536605654284e-05
+    ]
+}
 ```
 
 ## 模型结构：

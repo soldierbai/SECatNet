@@ -1,5 +1,5 @@
 import base64
-from io import BytesIO
+import json
 import requests
 
 url = 'http://127.0.0.1:5010/api/v1/hc_emci/predict'
@@ -15,6 +15,5 @@ with open('./data/g0.png', 'rb') as f:
 payload['image'] = image
 
 resp = requests.post(url, json=payload, headers=headers, verify=False)
-print(resp.text)
 print(resp.status_code)
-print(resp.json)
+print(json.dumps(resp.json(), indent=4, ensure_ascii=False))
